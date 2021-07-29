@@ -21,7 +21,12 @@ const root = new Vue({
             this.tasks.splice(index, 1);             // Rimuove l'elemento dell'array, selezionato dall'utente
         },
         addTask(){
-            this.tasks.push(this.newTask);          // Aggiunge all'array tasks il campo dell'utente
+            if(this.newTask.trim()){
+                this.tasks.push(this.newTask);          // Se il campo è compilato, aggiunge all'array tasks il campo dell'utente
+            }
+            this.newTask= '';
         }
+
+
     }
 })
