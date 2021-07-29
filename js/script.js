@@ -16,6 +16,8 @@ const root = new Vue({
         ]
     },
     methods:{
-        
+        doneTask(index){
+            this.tasks.splice(index,1);             //rimuove l'elemento dell'array, selezionato dall'utente
+        }
     }
 })
