@@ -18,8 +18,16 @@
                 </div>
                 <div class="col-12 col-md-6 col-lg-12 my-3">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Cosa devi fare oggi?" aria-label="Cosa devi fare oggi?" aria-describedby="button-addon2">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
+                        <input 
+                        type="text" 
+                        class="form-control" 
+                        placeholder="Cosa devi fare oggi?"  
+                        v-model="newTask">
+                        <button 
+                        class="btn btn-outline-secondary" 
+                        type="button" 
+                        @click="addTask">
+                        Aggiungi</button>
                       </div>
                 </div>
                 <div class="col-12  my-3">
@@ -28,7 +36,7 @@
                         v-for="(task, index) in tasks"                                                      
                         class="list-group-item d-flex justify-content-between align-items-center">
                             {{task}}
-                            <button type="button" class="btn-close" @click="doneTask(index)"></button>
+                            <button type="button" class="btn-close bgr" @click="doneTask(index)"></button>
                         </li>
                     </ul>
                 </div>

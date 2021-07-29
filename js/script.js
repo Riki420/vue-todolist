@@ -7,6 +7,7 @@ Vue.config.devtools = true;
 const root = new Vue({
     el:'#root',
     data:{
+        newTask: '',                                // newTask che verrà riempito dall'utente
         tasks: [
             'Comprare le cose',
             'Pulire il rusco',
@@ -17,7 +18,10 @@ const root = new Vue({
     },
     methods:{
         doneTask(index){
-            this.tasks.splice(index,1);             //rimuove l'elemento dell'array, selezionato dall'utente
+            this.tasks.splice(index, 1);             // Rimuove l'elemento dell'array, selezionato dall'utente
+        },
+        addTask(){
+            this.tasks.push(this.newTask);          // Aggiunge all'array tasks il campo dell'utente
         }
     }
 })
