@@ -21,25 +21,28 @@
                 </div>
 <hr>
                 <!--Form per l'utente-->
-                <div class="col-12 col-md-6 col-lg-12 my-3">
+                <div v-if="!tasks.length">
                     <div class="input-group mb-3">
                         <input 
                         type="text" 
                         class="form-control" 
                         placeholder="Cosa devi fare oggi?"  
-                        v-model="newTask">
+                        v-model="newTask"
+                        @keyup.enter="addTask">
+                        
                         <button 
                         class="btn btn-success" 
                         type="button" 
                         @click="addTask">
-                        <i class="bi bi-plus-lg"></i>
-                    </button>
-                      </div>
+                            <i class="bi bi-plus-lg"></i>
+                        </button>                     
+                        <h4 class="text-center align-items-end my-3" >Hai finito le cose da fare, complimenti. Inserisci nuove cose da fare alla tua lista.</h4>
+                    </div>
+    
                 </div>
                 <!--Lista delle cose da fare-->
-                <div class="col-12 my-3">
-                    <h4 class="text-center align-items-end" v-if="!tasks.length">Hai finito le cose da fare, complimenti. Inserisci nuove cose da fare alla tua lista.</h4>
-                    <ul class="list-group" v-else>
+                <div class="col-12 my-3" v-else>
+                    <ul class="list-group" >
                         <li 
                         v-for="(task, index) in tasks"                                                      
                         class="list-group-item d-flex justify-content-between align-items-center bgl">
@@ -48,6 +51,25 @@
                             type="button" 
                             class="btn-close bgr" 
                             @click="doneTask(index)"></button>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="col-12 col-md-6 col-lg-12 my-3">
+                                <div class="input-group mb-3">
+                                    <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    placeholder="Cosa devi fare oggi?"  
+                                    v-model="newTask"
+                                    @keyup.enter="addTask">
+                                    
+                                    <button 
+                                    class="btn btn-success" 
+                                    type="button" 
+                                    @click="addTask">
+                                        <i class="bi bi-plus-lg"></i>
+                                    </button>
+                                </div>
+                            </div>
                         </li>
                     </ul>
 
