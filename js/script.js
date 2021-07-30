@@ -7,7 +7,9 @@ Vue.config.devtools = true;
 const root = new Vue({
     el:'#root',
     data:{
+        isInputVisible: false,
         newTask: '',                                                         // newTask che verrà riempito dall'utente
+        searchTerm: '',
         tasks: [
             'Comprare le cose',
             'Pulire il rusco',
@@ -23,14 +25,19 @@ const root = new Vue({
         addTask(){
             if(this.newTask.trim()){
                 this.tasks.push(this.newTask);                             // Se il campo è compilato, aggiunge all'array tasks il campo dell'utente
-                this.toggleInput();
             }  else{
                 this.newTask= '';
 
             }
             
         },
-        
+
+        showItem(task){
+            if(!this.searchTerm.trim()) return true;
+            const filter = this.searchTerm.trim().toLowerCase();        // Metodo che richiama la funzione per una ricerca in tempo reale
+            task = task.toLowerCase();
+            return task.includes(filter);
+        }
         
     }
 })
